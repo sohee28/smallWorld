@@ -1,3 +1,4 @@
+import Axios from "axios";
 import React, { useState } from "react";
 import FileUpload from "../../util/FileUpload";
 
@@ -13,15 +14,48 @@ const clothKinds = [
   { key: 9, value: "Shoes" },
 ];
 
-function UploadProduct() {
+function UploadProduct(props) {
   const [TitleValue, setTitleValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceVale] = useState("");
   const [clothKindsValue, setclothKindsVale] = useState(1);
   const [Images, setImages] = useState([]);
 
+  console.log("cloth kind value" + clothKindsValue);
   const updateImages = (newImage) => {
     setImages(newImage);
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    if (
+      !TitleValue ||
+      !DescriptionValue ||
+      !PriceValue ||
+      !clothKindsValue ||
+      !Images
+    ) {
+      alert("All fields must be filled");
+    }
+
+    const variables = {
+      writer: props.user.userData._id,
+      title: TitleValue,
+      description: DescriptionValue,
+      price: PriceValue,
+      images: Images,
+      kinds: clothKindsValue,
+    };
+
+    Axios.post("/api/product/uploadProduct", variables).then((response) => {
+      if (response.data.success) {
+        alert("Product Successfully Uploaded");
+        props.history.push("/");
+      } else {
+        alert("Failed to upload Product");
+      }
+    });
   };
 
   return (
@@ -31,7 +65,7 @@ function UploadProduct() {
       </div>
 
       <FileUpload refreshFunction={updateImages} />
-      <form onSubmit>
+      <form onSubmit={onSubmit}>
         <br />
         <br />
         <label>Title</label>
@@ -56,16 +90,19 @@ function UploadProduct() {
           value={PriceValue}
           type="number"
         />
-        <select onChange={(e) => setclothKindsVale(e.target.value)}>
+        <select
+          onChange={(e) => setclothKindsVale(e.currentTarget.value)}
+          value={clothKindsValue}
+        >
           {clothKinds.map((item) => (
-            <option key={item.key} value={item.value}>
+            <option key={item.key} value={item.key}>
               {item.value}
             </option>
           ))}
         </select>
         <br />
         <br />
-        <button onClick>Submit</button>
+        <button onClick={onSubmit}>Submit</button>
       </form>
     </div>
   );

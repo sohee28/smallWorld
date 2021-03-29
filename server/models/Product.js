@@ -1,40 +1,49 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
-const jwt = require("jsonwebtoken");
-const moment = require("moment");
+const Schema = mongoose.Schema;
 
-const userSchema = mongoose.Schema({
-  name: {
-    type: String,
-    maxlength: 50,
+const productSchema = mongoose.Schema(
+  {
+    writer: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    title: {
+      type: String,
+      maxlength: 50,
+    },
+    description: {
+      type: String,
+    },
+    price: {
+      type: Number,
+      default: 0,
+    },
+    images: {
+      type: Array,
+      default: [],
+    },
+    kinds: {
+      type: Number,
+      default: 1,
+    },
+    sold: {
+      type: Number,
+      maxlength: 100,
+      default: 0,
+    },
+    views: {
+      type: Number,
+      default: 0,
+    },
   },
-  email: {
-    type: String,
-    trim: true,
-    unique: 1,
-  },
-  password: {
-    type: String,
-    minglength: 5,
-  },
-  lastname: {
-    type: String,
-    maxlength: 50,
-  },
-  role: {
-    type: Number,
-    default: 0,
-  },
-  image: String,
-  token: {
-    type: String,
-  },
-  tokenExp: {
-    type: Number,
-  },
-});
+  { timestamps: true }
+);
 
-const User = mongoose.model("User", userSchema);
+productSchema.index(
+  { title: "text", description: "text" },
+  { weights: { name: 5, description: 1 } }
+);
 
-module.exports = { User };
+const Product = mongoose.model("Product", productSchema);
+
+module.exports = { Product };

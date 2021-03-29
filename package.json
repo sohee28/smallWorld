@@ -16,6 +16,9 @@
   "author": "John ahn",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "concurrently": "^6.0.0",

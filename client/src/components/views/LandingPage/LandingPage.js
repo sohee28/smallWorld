@@ -32,7 +32,9 @@ function LandingPage(props) {
           hoverable={true}
           cover={
             <a href={`/product/${product._id}`}>
-              <ImageSlider images={product.images} />
+              <ImageSlider
+                images={product.images}
+              />
             </a>
           }
         >

@@ -33,6 +33,14 @@ const userSchema = mongoose.Schema({
   tokenExp: {
     type: Number,
   },
+  cart: {
+    type: Array,
+    default: [],
+  },
+  history: {
+    type: Array,
+    default: [],
+  },
 });
 
 userSchema.pre("save", function (next) {
@@ -63,8 +71,8 @@ userSchema.methods.comparePassword = function (plainPassword, cb) {
 
 userSchema.methods.generateToken = function (cb) {
   var user = this;
-//  console.log("user", user);
-//  console.log("userSchema", userSchema);
+  //  console.log("user", user);
+  //  console.log("userSchema", userSchema);
   var token = jwt.sign(user._id.toHexString(), "secret");
   var oneHour = moment().add(1, "hour").valueOf();
 

@@ -1,10 +1,15 @@
 import { isObject } from "formik";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getCartItems, removeCartItem } from "../../../_actions/user_actions";
+import {
+  getCartItems,
+  removeCartItem,
+  onSuccessBuy,
+} from "../../../_actions/user_actions";
 import UserCardBlock from "./Sections/UserCardBlock";
 import { Result, Empty } from "antd";
 import axios from "axios";
+import Paypal from "../../util/Paypal";
 
 function CartPage(props) {
   const dispatch = useDispatch();
@@ -54,6 +59,27 @@ function CartPage(props) {
       });
     });
   };
+  const transactionSuccess = (data) => {
+    dispatch(
+      onSuccessBuy({
+        cartDetail: props.user.cartDetail,
+        paymentData: data,
+      })
+    ).then((response) => {
+      if (response.payload.success) {
+        setShowSuccess(true);
+        setShowTotal(false);
+      }
+    });
+  };
+
+  const transactionError = () => {
+    console.log("Paypal Error");
+  };
+
+  const transactionCanceled = () => {
+    console.log("transaction Canceled");
+  };
 
   return (
     <div style={{ width: "85%", margin: "3rem auto" }}>
@@ -85,6 +111,14 @@ function CartPage(props) {
           </div>
         )}
       </div>
+      {ShowTotal && (
+        <Paypal
+          toPay={Total}
+          onSuccess={transactionSuccess}
+          transactionError={transactionError}
+          transactionCanceled={transactionCanceled}
+        />
+      )}
     </div>
   );
 }

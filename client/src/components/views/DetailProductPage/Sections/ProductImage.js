@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
+import styles from "./productImage.css";
 
 function ProductImage(props) {
   const [Images, setImages] = useState([]);
@@ -20,8 +21,8 @@ function ProductImage(props) {
   }, [props.detail]);
 
   return (
-    <div>
-      <ImageGallery items={Images} />
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <ImageGallery items={Images} additionalClass={styles.image} />
     </div>
   );
 }

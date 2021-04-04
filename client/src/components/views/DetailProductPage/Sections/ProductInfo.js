@@ -28,9 +28,13 @@ function ProductInfo(props) {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Button
           size="large"
-          shape="round"
           type="danger"
           onClick={addToCartHandler}
+          style={{
+            backgroundColor: "#ffbd59",
+            border: "none",
+            borderRadius: "10px",
+          }}
         >
           Add to Cart
         </Button>

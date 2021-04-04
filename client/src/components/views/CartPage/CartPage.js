@@ -84,6 +84,7 @@ function CartPage(props) {
   return (
     <div style={{ width: "85%", margin: "3rem auto" }}>
       <h1> My Cart</h1>
+      <hr style={{ marginBottom: "1.5rem" }} />
       <div>
         <UserCardBlock
           products={props.user.cartDetail}

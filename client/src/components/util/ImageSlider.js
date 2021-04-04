@@ -11,8 +11,6 @@ function ImageSlider(props) {
               style={{
                 width: "100%",
                 maxHeight: "auto",
-                display: "flex",
-                justifyContent: "center",
               }}
               src={`http://localhost:5000/${image}`}
               alt="productImage"

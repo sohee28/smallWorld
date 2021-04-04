@@ -32,9 +32,7 @@ function LandingPage(props) {
           hoverable={true}
           cover={
             <a href={`/product/${product._id}`}>
-              <ImageSlider
-                images={product.images}
-              />
+              <ImageSlider images={product.images} />
             </a>
           }
         >
@@ -121,31 +119,54 @@ function LandingPage(props) {
       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
         <h2>
           Enjoy The Little Thing
-          <Icon type="car" style={{ marginLeft: "1rem" }} theme="outlined" />
+          <Icon
+            type="car"
+            style={{ marginLeft: "1rem", color: "#ffbd59" }}
+            theme="outlined"
+          />
         </h2>
       </div>
-      <Row gutter={[16, 16]}>
-        <Col lg={12} xs={24}>
-          <CheckBox
-            list={clothKinds}
-            handleFilters={(filters) => handleFilters(filters, "kinds")}
-          />
-        </Col>
-        <Col lg={12} xs={24}>
-          <RadioBox
-            list={price}
-            handleFilters={(filters) => handleFilters(filters, "price")}
-          />
-        </Col>
-      </Row>
       <div
         style={{
           display: "flex",
-          justifyContent: "flex-end",
-          margin: "1rem auto",
+          justifyContent: "center",
+          margin: "0.5rem auto",
         }}
       >
         <SearchFeature refreshFunciton={updateSearchTerm} />
+      </div>
+      <div
+        style={{
+          display: "inline-flex",
+          justifyContent: "center",
+          alignItems: "center",
+          alignContent: "center",
+        }}
+      >
+        <Row justify="center">
+          <Col
+            lg={24}
+            xs={24}
+            style={{
+              borderRadius: "10px",
+            }}
+          >
+            <CheckBox
+              list={clothKinds}
+              handleFilters={(filters) => handleFilters(filters, "kinds")}
+            />
+          </Col>
+          <Col
+            lg={24}
+            xs={24}
+            style={{ marginTop: "1rem", marginBottom: "2rem" }}
+          >
+            <RadioBox
+              list={price}
+              handleFilters={(filters) => handleFilters(filters, "price")}
+            />
+          </Col>
+        </Row>
       </div>
       {Products.length === 0 ? (
         <div
@@ -160,14 +181,18 @@ function LandingPage(props) {
         </div>
       ) : (
         <div>
-          <Row gutter={[16, 16]}>{renderCards}</Row>
+          <Row gutter={[16, 48]}>{renderCards}</Row>
         </div>
       )}
       <br />
       <br />
       {PostSize >= Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <button onClick={onLoadMore}>Load More</button>
+          <button className='loadMoreBtn'
+            onClick={onLoadMore}
+          >
+            Load More
+          </button>
         </div>
       )}
     </div>

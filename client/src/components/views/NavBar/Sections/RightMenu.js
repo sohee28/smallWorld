@@ -5,6 +5,7 @@ import axios from "axios";
 import { USER_SERVER } from "../../../Config";
 import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
+import "./Navbar.css";
 
 function RightMenu(props) {
   const user = useSelector((state) => state.user);
@@ -22,24 +23,30 @@ function RightMenu(props) {
   if (user.userData && !user.userData.isAuth) {
     return (
       <Menu mode={props.mode}>
-        <Menu.Item key="mail">
-          <a href="/login">Signin</a>
+        <Menu.Item className="navbar_btns" key="mail">
+          <a href="/login" style={{ fontSize: "14px" }}>
+            Signin
+          </a>
         </Menu.Item>
-        <Menu.Item key="app">
-          <a href="/register">Signup</a>
+        <Menu.Item key="app" className="navbar_btns">
+          <a href="/register" style={{ fontSize: "14px" }}>
+            Signup
+          </a>
         </Menu.Item>
       </Menu>
     );
   } else {
     return (
       <Menu mode={props.mode}>
-        <Menu.Item key="history">
-          <a href="/history">History </a>
+        <Menu.Item key="history" className="navbar_btns">
+          <a href="/history" style={{ fontSize: "14px" }}>
+            History
+          </a>
         </Menu.Item>
-        <Menu.Item key="upload">
+        <Menu.Item key="upload" className="navbar_btns">
           <a href="/product/upload">Upload</a>
         </Menu.Item>
-        <Menu.Item key="cart">
+        <Menu.Item key="cart" className="navbar_btns">
           <Badge count={user.userData && user.userData.cart.length}>
             <a href="/user/cart" style={{ marginRight: -22, color: "#667777" }}>
               <Icon
@@ -49,8 +56,10 @@ function RightMenu(props) {
             </a>
           </Badge>
         </Menu.Item>
-        <Menu.Item key="logout">
-          <a onClick={logoutHandler}>Logout</a>
+        <Menu.Item key="logout" className="navbar_btns">
+          <a style={{ fontSize: "14px" }} onClick={logoutHandler}>
+            Logout
+          </a>
         </Menu.Item>
       </Menu>
     );

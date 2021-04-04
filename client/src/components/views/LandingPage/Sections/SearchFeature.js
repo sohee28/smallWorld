@@ -17,6 +17,7 @@ function SearchFeature(props) {
         value={SearchTerms}
         onChange={searchTermHandler}
         placeholder="Search By Typing..."
+        style={{ width: "50vh", marginBottom: "1.5rem" }}
       />
     </div>
   );

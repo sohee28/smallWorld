@@ -20,7 +20,7 @@ function HistoryPage(props) {
         <h1>History</h1>
       </div>
       <br />
-
+      <hr style={{ marginBottom: "2rem" }} />
       <table>
         <thead>
           <tr>

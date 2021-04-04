@@ -56,3 +56,35 @@ th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.loadMoreBtn {
+  background: white;
+  border: 1px solid lightgray;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.loadMoreBtn:hover {
+  background-color: #ffbd59;
+  color: white;
+  border: none;
+}
+
+.loadMoreBtn:active,
+.CartPageBtn:active {
+  background-color: #ff9459;
+  color: white;
+  border: none;
+}
+
+.CartPageBtn {
+  background: white;
+  border: 1px solid lightgray;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+.CartPageBtn:hover {
+  background-color: #ffbd59;
+  color: white;
+  border: none;
+}

@@ -1,4 +1,4 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 .menu {
   padding: 0 20px;
@@ -15,12 +15,22 @@
 
 .menu__logo a {
   display: inline-block;
-  font-size: 20px;
   padding: 19px 20px;
 }
 
 .menu__container .ant-menu-item {
   padding: 0px 5px;
+}
+.ant-menu > .ant-menu-item:hover,
+.ant-menu > .ant-menu-submenu:hover,
+.ant-menu > .ant-menu-item-active,
+.ant-menu > .ant-menu-submenu-active,
+.ant-menu > .ant-menu-item-open,
+.ant-menu > .ant-menu-submenu-open,
+.ant-menu > .ant-menu-item-selected,
+.ant-menu > .ant-menu-submenu-selected {
+  color: #ffbd59;
+  border-bottom: 2px solid #ffbd59;
 }
 
 .menu__container .ant-menu-submenu-title {
@@ -30,6 +40,11 @@
 .menu__container .ant-menu-item a,
 .menu__container .ant-menu-submenu-title a {
   padding: 10px 15px;
+}
+
+.menu__container .ant-menu-item a:hover,
+.menu__container .ant-menu-submenu-title a:hover {
+  color: #ffbd59;
 }
 
 .menu__container .ant-menu-horizontal {
@@ -45,12 +60,23 @@
 }
 
 .menu__mobile-button {
+  border: 1px solid #ffbd59;
   float: right;
   height: 32px;
   padding: 6px;
   margin-top: 8px;
   display: none !important; /* use of important to overwrite ant-btn */
-  background: #3e91f7;
+  background: #ffbd59;
+}
+
+.menu__mobile-button:hover {
+  border: 1px solid #ff9459;
+
+  background: #ff9459;
+}
+
+.navbar_btns a:hover {
+  color: #ffbd59;
 }
 
 .menu_drawer .ant-drawer-body {
@@ -59,7 +85,7 @@
 
 /* align header of Drawer with header of page */
 .menu_drawer .ant-drawer-header {
-  padding: 14px 24px !important;
+  padding: 24px !important;
 }
 
 @media (max-width: 767px) {

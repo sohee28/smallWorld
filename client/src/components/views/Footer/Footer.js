@@ -1,16 +1,15 @@
-import React from 'react'
-import {Icon} from 'antd';
+import React from "react";
+import { Icon } from "antd";
+import "./Footer.css";
 
 function Footer() {
-    return (
-        <div style={{
-            height: '80px', display: 'flex',
-            flexDirection: 'column', alignItems: 'center',
-            justifyContent: 'center', fontSize:'1rem'
-        }}>
-           <p> Happy Coding  <Icon type="smile" /></p>
-        </div>
-    )
+  return (
+    <div className="Footer">
+      <Icon className="FooterIcon" type="github" />
+      <Icon className="FooterIcon" type="facebook" />
+      <Icon className="FooterIcon" type="instagram" />
+    </div>
+  );
 }
 
-export default Footer
+export default Footer;

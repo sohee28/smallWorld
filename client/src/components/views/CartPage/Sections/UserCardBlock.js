@@ -12,17 +12,22 @@ function UserCardBlock(props) {
     props.products &&
     props.products.map((product) => (
       <tr key={product._id}>
-        <td>
+        <td style={{ textAlign: "center" }}>
           <img
-            style={{ width: "70px" }}
+            style={{ width: "50px" }}
             alt="product"
             src={renderCartImage(product.images)}
           />
         </td>
-        <td>{product.quantity} EA</td>
-        <td>$ {product.price} </td>
-        <td>
-          <button onClick={() => props.removeItem(product._id)}>Remove</button>
+        <td style={{ textAlign: "center" }}>{product.quantity} EA</td>
+        <td style={{ textAlign: "center" }}>$ {product.price} </td>
+        <td style={{ textAlign: "center" }}>
+          <button
+            className="CartPageBtn"
+            onClick={() => props.removeItem(product._id)}
+          >
+            Remove
+          </button>
         </td>
       </tr>
     ));
